@@ -52,11 +52,15 @@ const Index = () => {
   };
 
   const fetchVectorDbsList = async () => {
-    if (selectedOption === 'memory') {
-      // Simulate fetching vector dbs list
-      setVectorDbsList(['Option 1', 'Option 2', 'Option 3']);
-    }
-  };
+  if (selectedOption === 'memory') {
+    // Simulate fetching vector dbs list
+    // The 'setVectorDbsList' function should be called with the actual options
+    setVectorDbsList(['Vector DB 1', 'Vector DB 2', 'Vector DB 3']);
+  } else {
+    // Reset the list if 'memory' is not selected
+    setVectorDbsList([]);
+  }
+};
 
   fetchFunctionFileNames();
   fetchVectorDbsList();
