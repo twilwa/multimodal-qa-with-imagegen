@@ -122,7 +122,7 @@ const Index = () => {
 
   return (
     <Flex h="100vh" overflow="hidden">
-      <Box w="300px" h="calc(100vh - 40px)" borderRight="1px" borderColor="gray.200" overflowY="auto">
+      <Box w="350px" h="calc(100vh - 40px)" borderRight="1px" borderColor="gray.200" overflowY="auto" pl={2}>
         <Tabs isFitted variant="enclosed">
           <TabList>
             <Tab>Chat</Tab>
@@ -158,7 +158,7 @@ const Index = () => {
 
       <Box flex="1" p={4}>
         {/* Placeholder for Image Display */}
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4} h="512px" w="512px">
+        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4} h="512px" w="512px" ml="auto" mr="auto">
           <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
         </Box>
 
