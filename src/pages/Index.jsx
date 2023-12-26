@@ -176,9 +176,9 @@ const Index = () => {
       </Box>
 
       <Box flex="1" p={4}>
-        <HStack spacing={4} align="stretch" h="100vh">
-          <Box flex="1" p={4} overflowY="auto">
-            <VStack spacing={4}>
+        <HStack spacing={4} align="start" h="100vh">
+          <VStack spacing={4} flex="1" p={4} overflowY="auto">
+            <Box borderWidth="1px" borderRadius="lg" p={4} w="100%" minHeight="200px" overflowY="auto">
               {messages.map((message, index) => (
                 <Box
                   key={index}
@@ -186,12 +186,42 @@ const Index = () => {
                   bg={message.type === 'user' ? 'blue.100' : 'gray.100'}
                   p={3}
                   borderRadius="md"
+                  mb={3}
                 >
                   {message.content}
                 </Box>
               ))}
-            </VStack>
-          </Box>
+            </Box>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                placeholder="Type a message..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              />
+              <InputRightElement width="9rem">
+                <IconButton
+                  aria-label="Upload image"
+                  icon={<FaUpload />}
+                  onClick={() => document.getElementById('file-upload').click()}
+                />
+                <input
+                  id="file-upload"
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                />
+                <IconButton
+                  aria-label="Send message"
+                  ml={2}
+                  icon={<FaPaperPlane />}
+                  onClick={handleSendMessage}
+                />
+              </InputRightElement>
+            </InputGroup>
+          </VStack>
           <Box h="512px" w="512px" borderWidth="1px" borderRadius="lg" overflow="hidden">
             <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
           </Box>
