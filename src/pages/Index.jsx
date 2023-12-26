@@ -178,7 +178,7 @@ const Index = () => {
       <Box flex="1" p={4}>
         <HStack spacing={0} align="start" h="100vh">
           <VStack spacing={4} flex="1" p={4} overflowY="auto">
-            <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" minHeight="200px" overflowY="auto">
+            <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" minHeight="512px" overflowY="auto">
               {messages.map((message, index) => (
                 <Box
                   key={index}
