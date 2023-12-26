@@ -24,10 +24,33 @@ const Index = () => {
   const [inputValue, setInputValue] = useState('');
   const { isOpen, onToggle } = useDisclosure();
 
+  // Placeholder function for making API call to GPT-4
+  const sendMessageToGPT4 = (message) => {
+    // TODO: Replace with actual API call to GPT-4, using the URL field for the image
+    console.log(`Sending message to GPT-4 with image URL: ${message.url}`);
+    // Expected API call structure (example):
+    // fetch('https://api.openai.com/v1/engines/gpt-4-v/completions', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer YOUR_API_KEY`
+    //   },
+    //   body: JSON.stringify({
+    //     prompt: message.text,
+    //     url: message.url,
+    //   }),
+    // })
+    // .then(response => response.json())
+    // .then(data => console.log(data))
+    // .catch(error => console.error('Error:', error));
+  };
+
   const handleSendMessage = () => {
     if (inputValue.trim()) {
+      const newMessage = { type: 'user', content: inputValue };
       // Here we would normally send the message to the backend
-      setMessages([...messages, { type: 'user', content: inputValue }]);
+      setMessages([...messages, newMessage]);
+      sendMessageToGPT4({ text: inputValue, url: 'URL_OF_THE_IMAGE' }); // Replace with actual image URL
       setInputValue('');
     }
   };
