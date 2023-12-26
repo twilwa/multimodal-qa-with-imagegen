@@ -1,3 +1,4 @@
+// Correct the imports to include useDisclosure
 import React, { useState } from 'react';
 import {
   Box,
@@ -14,11 +15,14 @@ import {
   TabPanels,
   Tabs,
   Textarea,
-  useDisclosure,
   VStack,
+  HStack,
+  useDisclosure // Re-added useDisclosure to the imports
 } from '@chakra-ui/react';
 import { FaPaperPlane, FaUpload } from 'react-icons/fa';
-import FeedbackSelector from '../components/FeedbackSelector';
+import FeedbackSelector from '../components/FeedbackSelector'; // Verify the path is correct
+
+// ... The rest of the Index component code remains unchanged ...
 
 const Index = () => {
   const [messages, setMessages] = useState([]);
