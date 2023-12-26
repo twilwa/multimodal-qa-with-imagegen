@@ -24,10 +24,62 @@ const Index = () => {
   const [inputValue, setInputValue] = useState('');
   const { isOpen, onToggle } = useDisclosure();
 
-  // Simulated function for making API call to GPT-4 and triggering generate_image
+  // Simulated function for making API call to litellm server with vision and function call models
   const sendMessageToGPT4 = async (message) => {
-    // Simulate sending a message to GPT-4 with image URL and triggering generate_image
-    console.log(`Sending message to GPT-4 with image URL: ${message.url}`);
+    // Check if message contains an image URL to determine if it's a vision model request
+    if (message.url) {
+      // Simulate sending a vision model request to litellm server
+      const visionResponse = {
+        model: "vertex_ai/gemini-pro-vision",
+        messages: [
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": "Whats in this image?"
+              },
+              {
+                "type": "image_url",
+                "image_url": {
+                  "url": message.url
+                }
+              }
+            ]
+          }
+        ],
+      };
+      console.log('Vision model request:', visionResponse);
+    } else {
+      // Simulate sending a function call request to litellm server
+      const functionCallResponse = {
+        model: "claude-2",
+        messages: [
+          {"role": "user", "content": message.text}
+        ],
+        functions: [
+          {
+            "name": "get_current_weather",
+            "description": "Get the current weather in a given location",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "string",
+                  "description": "The city and state, e.g. San Francisco, CA"
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": ["celsius", "fahrenheit"]
+                }
+              },
+              "required": ["location"]
+            }
+          }
+        ]
+      };
+      console.log('Function call request:', functionCallResponse);
+    }
     try {
       const response = await fetch('/api/generate-image', {
         method: 'POST',
