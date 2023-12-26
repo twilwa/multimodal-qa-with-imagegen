@@ -199,13 +199,13 @@ const Index = () => {
                 ))}
               </Box>
               {messages.some(message => message.type === 'image') && (
-                <Image
-                  src={messages.find(message => message.type === 'image').content}
-                  alt="Uploaded content"
-                  boxSize="100%"
-                  objectFit="cover"
-                />
-              )}
+                    <Image
+                      src={messages.find(message => message.type === 'image').content || "https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=512x512&key=YOUR_API_KEY"}
+                      alt="Uploaded content"
+                      boxSize="100%"
+                      objectFit="cover"
+                    />
+                  )}
               <InputGroup size="md" mt={3}>
                 <Input
                   pr="4.5rem"
