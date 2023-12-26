@@ -174,18 +174,16 @@ const Index = () => {
                 <option value="functions">Functions</option>
                 <option value="memory">Memory</option>
               </Select>
-              {selectedOption === 'functions' ? (
-                <VStack align="stretch" spacing={3}>
-                  {/* Simulating fetching filenames from the /backend/functions directory */}
-                  {['generate_image.py', 'another_function.py'].map((filename, index) => (
+              <VStack align="stretch" spacing={3}>
+                {selectedOption === 'functions' && (
+                  ['generate_image.py', 'another_function.py'].map((filename, index) => (
                     <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
                       {filename}
                     </Text>
-                  ))}
-                </VStack>
-              ) : (
-                <DatabaseObjectDisplay />
-              )}
+                  ))
+                )}
+                {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
+              </VStack>
             </TabPanel>
           </TabPanels>
         </Tabs>
