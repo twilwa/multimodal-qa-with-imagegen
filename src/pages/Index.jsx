@@ -223,16 +223,6 @@ const Index = () => {
     </Text>
   ))
 )}
-{selectedOption === 'functions' && functionFileNames.map((filename, index) => (
-  <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
-    {filename}
-  </Text>
-))}
-{selectedOption === 'memory' && vectorDbsList.map((dbName, index) => (
-  <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
-    {dbName}
-  </Text>
-))}
 {selectedOption === 'Eval-Dashboard' && (
   <DatabaseObjectDisplay />
 )}
