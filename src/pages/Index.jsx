@@ -192,7 +192,7 @@ const Index = () => {
                 </Box>
               ))}
             </Box>
-            <InputGroup size="md" w="512px">
+            <InputGroup size="md" w="1024px">
               <Input
                 pr="4.5rem"
                 placeholder="Type a message..."
