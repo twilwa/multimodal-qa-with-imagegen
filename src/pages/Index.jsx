@@ -29,6 +29,7 @@ import DatabaseObjectDisplay from '../components/DatabaseObjectDisplay'; // Impo
 const Index = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState(''); // State to hold the selected dropdown option
   const { isOpen, onToggle } = useDisclosure();
 
   // Simulated function for making API call to litellm server with vision and function call models
@@ -169,12 +170,12 @@ const Index = () => {
               </VStack>
             </TabPanel>
             <TabPanel>
-              <Select placeholder="Select option" mb={4}>
+              <Select placeholder="Select option" mb={4} onChange={(e) => setSelectedOption(e.target.value)}>
                 <option value="functions">Functions</option>
                 <option value="memory">Memory</option>
               </Select>
-              <DatabaseObjectDisplay />
-              {/* Content for Functions and Memory will be added here */}
+              {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
+              {/* Content for Functions and Memory will be added here. DatabaseObjectDisplay will not be shown if 'functions' is selected. */}
             </TabPanel>
           </TabPanels>
         </Tabs>
