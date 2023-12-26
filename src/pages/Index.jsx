@@ -177,8 +177,7 @@ const Index = () => {
 
       <Box flex="1" p={4}>
         <HStack spacing={0} align="start">
-          <HStack spacing={0} align="start">
-            <VStack spacing={0} align="stretch">
+          <VStack spacing={0} align="stretch">
               <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" h="512px" overflowY="auto">
                 {messages.map((message, index) => (
                   <Box
@@ -225,13 +224,6 @@ const Index = () => {
                 </InputRightElement>
               </InputGroup>
             </VStack>
-            <Box h="512px" w="512px" borderWidth="1px" borderRadius="lg" overflow="hidden">
-              <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
-            </Box>
-          </HStack>
-          <Box h="512px" w="512px" borderWidth="1px" borderRadius="lg" overflow="hidden">
-            <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
-          </Box>
         </HStack>
     
       </Box>
