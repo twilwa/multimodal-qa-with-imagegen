@@ -1,1 +1,1 @@
-# This file is a placeholder for the generate_image functionality.
+# Placeholder file for generate_image.py
