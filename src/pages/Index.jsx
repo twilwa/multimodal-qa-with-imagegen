@@ -35,36 +35,36 @@ const Index = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   useEffect(() => {
-  const fetchFunctionFileNames = async () => {
-    if (selectedOption === 'functions') {
-      try {
-        const response = await fetch('/backend/functions');
-        if (response.ok) {
-          const fileNames = await response.json();
-          setFunctionFileNames(fileNames);
-        } else {
-          console.error('Failed to fetch function filenames');
+    const fetchFunctionFileNames = async () => {
+      if (selectedOption === 'functions') {
+        try {
+          const response = await fetch('/backend/functions');
+          if (response.ok) {
+            const fileNames = await response.json();
+            setFunctionFileNames(fileNames);
+          } else {
+            console.error('Failed to fetch function filenames');
+          }
+        } catch (error) {
+          console.error('Error fetching function filenames:', error);
         }
-      } catch (error) {
-        console.error('Error fetching function filenames:', error);
       }
-    }
-  };
+    };
 
-  const fetchVectorDbsList = async () => {
-  if (selectedOption === 'memory') {
-    // Simulate fetching vector dbs list
-    // The 'setVectorDbsList' function should be called with the actual options
-    setVectorDbsList(['Vector DB 1', 'Vector DB 2', 'Vector DB 3']);
-  } else {
-    // Reset the list if 'memory' is not selected
-    setVectorDbsList([]);
-  }
-};
+    const fetchVectorDbsList = async () => {
+      if (selectedOption === 'memory') {
+        // Simulate fetching vector dbs list
+        // The 'setVectorDbsList' function should be called with the actual options
+        setVectorDbsList(['Vector DB 1', 'Vector DB 2', 'Vector DB 3']);
+      } else {
+        // Reset the list if 'memory' is not selected
+        setVectorDbsList([]);
+      }
+    };
 
-  fetchFunctionFileNames();
-  fetchVectorDbsList();
-}, [selectedOption]);
+    fetchFunctionFileNames();
+    fetchVectorDbsList();
+  }, [selectedOption]); // Ensure dependencies for useEffect are correctly set
 
   // Simulated function for making API call to litellm server with vision and function call models
   const sendMessageToGPT4 = async (message) => {
@@ -223,11 +223,11 @@ const Index = () => {
     </Text>
   ))
 )}
-{selectedOption === 'memory' && (
+{selectedOption === 'memory' && vectorDbsList.length > 0 && (
   vectorDbsList.map((db, index) => (
-    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+    <Box key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
       {db}
-    </Text>
+    </Box>
   ))
 )}
 </VStack>
