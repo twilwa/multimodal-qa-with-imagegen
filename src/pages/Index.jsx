@@ -17,7 +17,8 @@ import {
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
-import { FaImage, FaPaperPlane, FaUpload } from 'react-icons/fa';
+import { FaPaperPlane, FaUpload } from 'react-icons/fa';
+import FeedbackSelector from '../components/FeedbackSelector';
 
 const Index = () => {
   const [messages, setMessages] = useState([]);
@@ -142,6 +143,7 @@ const Index = () => {
                     {message.content}
                   </Box>
                 ))}
+                <FeedbackSelector />
               </VStack>
             </TabPanel>
             <TabPanel>
