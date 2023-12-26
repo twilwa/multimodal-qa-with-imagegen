@@ -17,7 +17,8 @@ import {
   Textarea,
   VStack,
   HStack,
-  useDisclosure // Re-added useDisclosure to the imports
+  useDisclosure,
+  Select // Added Select import
 } from '@chakra-ui/react';
 import { FaPaperPlane, FaUpload } from 'react-icons/fa';
 import FeedbackSelector from '../components/FeedbackSelector'; // Verify the path is correct
@@ -146,7 +147,7 @@ const Index = () => {
         <Tabs isFitted variant="enclosed">
           <TabList>
             <Tab>Eval</Tab>
-            <Tab>Chat</Tab>
+            <Tab>Interface</Tab>
           </TabList>
 
           <TabPanels>
@@ -167,15 +168,11 @@ const Index = () => {
               </VStack>
             </TabPanel>
             <TabPanel>
-              {/* Placeholder for SQL Query Results Panel */}
-              <Textarea placeholder="Enter SQL query..." />
-              <Button mt={2}>Run Query</Button>
-              {/* Assume backend executes SQL and returns results */}
-              <Box mt={4} p={3} borderWidth="1px" borderRadius="lg">
-                {/* Placeholder for displaying SQL query results */}
-                {/* Actual query results should replace this placeholder after backend integration */}
-                <pre>SQL query results will be displayed here.</pre>
-              </Box>
+              <Select placeholder="Select option">
+                <option value="functions">Functions</option>
+                <option value="memory">Memory</option>
+              </Select>
+              {/* Content for Functions and Memory will be added here */}
             </TabPanel>
           </TabPanels>
         </Tabs>
