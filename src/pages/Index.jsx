@@ -192,7 +192,7 @@ const Index = () => {
                 </Box>
               ))}
             </Box>
-            <InputGroup size="md" w="1024px">
+            <InputGroup size="md" w="512px">
               <Input
                 pr="4.5rem"
                 placeholder="Type a message..."
@@ -200,7 +200,7 @@ const Index = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               />
-              <InputRightElement width="9rem">
+              <InputRightElement width="4.5rem">
                 <IconButton
                   aria-label="Upload image"
                   icon={<FaUpload />}
@@ -214,6 +214,8 @@ const Index = () => {
                   onChange={handleFileUpload}
                 />
                 <IconButton
+                  h="1.75rem"
+                  size="sm"
                   aria-label="Send message"
                   ml={2}
                   icon={<FaPaperPlane />}
@@ -226,16 +228,17 @@ const Index = () => {
             <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
           </Box>
         </HStack>
-        <InputGroup size="md" w="1024px">
+    <InputGroup size="md" w="full">
           <Input
-            pr="4.5rem"
             placeholder="Type a message..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
-          <InputRightElement width="7rem">
+          <InputRightElement width="4.5rem">
             <IconButton
+              h="1.75rem"
+              size="sm"
               aria-label="Upload image"
               icon={<FaUpload />}
               onClick={() => document.getElementById('file-upload').click()}
@@ -248,6 +251,8 @@ const Index = () => {
               onChange={handleFileUpload}
             />
             <IconButton
+              h="1.75rem"
+              size="sm"
               aria-label="Send message"
               ml={2}
               icon={<FaPaperPlane />}
