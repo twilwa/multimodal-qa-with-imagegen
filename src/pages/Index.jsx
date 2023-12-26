@@ -31,27 +31,36 @@ const Index = () => {
   const [inputValue, setInputValue] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [functionFileNames, setFunctionFileNames] = useState([]); // State to hold fetched filenames
+  const [vectorDbsList, setVectorDbsList] = useState([]); // State to hold the vector databases list
   const { isOpen, onToggle } = useDisclosure();
 
   useEffect(() => {
-    const fetchFunctionFileNames = async () => {
-      if (selectedOption === 'functions') {
-        try {
-          const response = await fetch('/backend/functions');
-          if (response.ok) {
-            const fileNames = await response.json();
-            setFunctionFileNames(fileNames);
-          } else {
-            console.error('Failed to fetch function filenames');
-          }
-        } catch (error) {
-          console.error('Error fetching function filenames:', error);
+  const fetchFunctionFileNames = async () => {
+    if (selectedOption === 'functions') {
+      try {
+        const response = await fetch('/backend/functions');
+        if (response.ok) {
+          const fileNames = await response.json();
+          setFunctionFileNames(fileNames);
+        } else {
+          console.error('Failed to fetch function filenames');
         }
+      } catch (error) {
+        console.error('Error fetching function filenames:', error);
       }
-    };
+    }
+  };
 
-    fetchFunctionFileNames();
-  }, [selectedOption]);
+  const fetchVectorDbsList = async () => {
+    if (selectedOption === 'memory') {
+      // Simulate fetching vector dbs list
+      setVectorDbsList(['Option 1', 'Option 2', 'Option 3']);
+    }
+  };
+
+  fetchFunctionFileNames();
+  fetchVectorDbsList();
+}, [selectedOption]);
 
   // Simulated function for making API call to litellm server with vision and function call models
   const sendMessageToGPT4 = async (message) => {
@@ -203,7 +212,20 @@ const Index = () => {
       </Text>
     ))
   )}
-  {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
+  {selectedOption === 'functions' && (
+  functionFileNames.map((filename, index) => (
+    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+      {filename}
+    </Text>
+  ))
+)}
+{selectedOption === 'memory' && (
+  vectorDbsList.map((db, index) => (
+    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+      {db}
+    </Text>
+  ))
+)}
 </VStack>
             </TabPanel>
           </TabPanels>
