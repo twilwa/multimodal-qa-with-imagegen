@@ -24,26 +24,29 @@ const Index = () => {
   const [inputValue, setInputValue] = useState('');
   const { isOpen, onToggle } = useDisclosure();
 
-  // Placeholder function for making API call to GPT-4
-  const sendMessageToGPT4 = (message) => {
-    // TODO: Replace with actual API call to GPT-4, using the URL field for the image
+  // Simulated function for making API call to GPT-4 and triggering generate_image
+  const sendMessageToGPT4 = async (message) => {
+    // Simulate sending a message to GPT-4 with image URL and triggering generate_image
     console.log(`Sending message to GPT-4 with image URL: ${message.url}`);
-    // Expected API call structure (example):
-    // fetch('https://api.openai.com/v1/engines/gpt-4-v/completions', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer YOUR_API_KEY`
-    //   },
-    //   body: JSON.stringify({
-    //     prompt: message.text,
-    //     url: message.url,
-    //   }),
-    // })
-    // .then(response => response.json())
-    // .then(data => console.log(data))
-    // .catch(error => console.error('Error:', error));
+    try {
+      const response = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          seed: 176400, // Example seed value, replace with actual if needed
+        }),
+      });
+      const data = await response.json();
+      if (data.url) {
+        console.log('Generated image URL:', data.url);
+      }
+    } catch (error) {
+      console.error('Error in generate_image:', error);
+    }
   };
+  // Rest of the code remains unchanged
 
   const handleSendMessage = () => {
     if (inputValue.trim()) {
