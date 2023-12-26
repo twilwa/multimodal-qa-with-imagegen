@@ -176,9 +176,9 @@ const Index = () => {
       </Box>
 
       <Box flex="1" p={4}>
-        <HStack spacing={0} align="start" h="100vh">
-          <VStack spacing={4} flex="1" p={4} overflowY="auto">
-            <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" minHeight="512px" overflowY="auto">
+        <HStack spacing={0} align="start">
+          <VStack spacing={0} align="stretch">
+            <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" h="512px" overflowY="auto">
               {messages.map((message, index) => (
                 <Box
                   key={index}
@@ -226,7 +226,7 @@ const Index = () => {
             <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
           </Box>
         </HStack>
-        <InputGroup>
+        <InputGroup size="md" w="1024px">
           <Input
             pr="4.5rem"
             placeholder="Type a message..."
