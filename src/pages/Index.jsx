@@ -29,9 +29,19 @@ const Index = () => {
   const sendMessageToGPT4 = async (message) => {
     // Check if message contains an image URL to determine if it's a vision model request
     if (message.url) {
-      // Simulate sending a vision model request to litellm server
+      // Simulate sending a vision model request to litellm server with additional properties
+      // Since feedbackSettings is not defined, we'll remove the reference to it
+      // and instead use a placeholder object for the feedbackEnabled structure
+      const app_id = 'unique_app_identifier'; // Replace with logic to generate unique app identifiers per conversation
+      // Placeholder for feedback enabled settings, replace with actual logic to get feedback settings
+      const feedbackEnabled = {
+        "feature1": "enabled",
+        "feature2": "disabled"
+      };
       const visionResponse = {
         model: "vertex_ai/gemini-pro-vision",
+        app_id: app_id,
+        feedback: feedbackEnabled,
         messages: [
           {
             "role": "user",
@@ -125,8 +135,8 @@ const Index = () => {
       <Box w="350px" h="calc(100vh - 40px)" borderRight="1px" borderColor="gray.200" overflowY="auto" pl={2}>
         <Tabs isFitted variant="enclosed">
           <TabList>
-            <Tab>Chat</Tab>
             <Tab>Eval</Tab>
+            <Tab>Chat</Tab>
           </TabList>
 
           <TabPanels>
@@ -147,10 +157,15 @@ const Index = () => {
               </VStack>
             </TabPanel>
             <TabPanel>
-              {/* Placeholder for Evaluation Panel */}
-              <Textarea placeholder="Enter evaluation script..." />
-              <Button mt={2}>Run Evaluation</Button>
-              {/* Evaluation results would be displayed here */}
+              {/* Placeholder for SQL Query Results Panel */}
+              <Textarea placeholder="Enter SQL query..." />
+              <Button mt={2}>Run Query</Button>
+              {/* Assume backend executes SQL and returns results */}
+              <Box mt={4} p={3} borderWidth="1px" borderRadius="lg">
+                {/* Placeholder for displaying SQL query results */}
+                {/* Actual query results should replace this placeholder after backend integration */}
+                <pre>SQL query results will be displayed here.</pre>
+              </Box>
             </TabPanel>
           </TabPanels>
         </Tabs>
