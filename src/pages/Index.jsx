@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   IconButton,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
