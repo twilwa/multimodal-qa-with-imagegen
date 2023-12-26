@@ -172,11 +172,26 @@ const Index = () => {
       </Box>
 
       <Box flex="1" p={4}>
-        {/* Placeholder for Image Display */}
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4} h="512px" w="512px" ml="auto" mr="auto">
-          <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
-        </Box>
-
+        <HStack spacing={4} align="stretch" h="100vh">
+          <Box flex="1" p={4} overflowY="auto">
+            <VStack spacing={4}>
+              {messages.map((message, index) => (
+                <Box
+                  key={index}
+                  alignSelf={message.type === 'user' ? 'flex-end' : 'flex-start'}
+                  bg={message.type === 'user' ? 'blue.100' : 'gray.100'}
+                  p={3}
+                  borderRadius="md"
+                >
+                  {message.content}
+                </Box>
+              ))}
+            </VStack>
+          </Box>
+          <Box h="512px" w="512px" borderWidth="1px" borderRadius="lg" overflow="hidden">
+            <Image src="https://images.unsplash.com/photo-1576158113928-4c240eaaf360?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxwbGFjZWhvbGRlciUyMGZvciUyMGdlbmVyYXRlZCUyMGltYWdlfGVufDB8fHx8MTcwMzU3NDUwOXww&ixlib=rb-4.0.3&q=80&w=1080" boxSize="512px" objectFit="cover" />
+          </Box>
+        </HStack>
         <InputGroup>
           <Input
             pr="4.5rem"
