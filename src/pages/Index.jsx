@@ -1,5 +1,5 @@
 // Correct the imports to include useDisclosure
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -29,8 +29,29 @@ import DatabaseObjectDisplay from '../components/DatabaseObjectDisplay'; // Impo
 const Index = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState(''); // State to hold the selected dropdown option
+  const [selectedOption, setSelectedOption] = useState('');
+  const [functionFileNames, setFunctionFileNames] = useState([]); // State to hold fetched filenames
   const { isOpen, onToggle } = useDisclosure();
+
+  useEffect(() => {
+    const fetchFunctionFileNames = async () => {
+      if (selectedOption === 'functions') {
+        try {
+          const response = await fetch('/backend/functions');
+          if (response.ok) {
+            const fileNames = await response.json();
+            setFunctionFileNames(fileNames);
+          } else {
+            console.error('Failed to fetch function filenames');
+          }
+        } catch (error) {
+          console.error('Error fetching function filenames:', error);
+        }
+      }
+    };
+
+    fetchFunctionFileNames();
+  }, [selectedOption]);
 
   // Simulated function for making API call to litellm server with vision and function call models
   const sendMessageToGPT4 = async (message) => {
@@ -171,19 +192,19 @@ const Index = () => {
             </TabPanel>
             <TabPanel>
               <Select placeholder="Select option" mb={4} onChange={(e) => setSelectedOption(e.target.value)}>
-                <option value="functions">Functions</option>
-                <option value="memory">Memory</option>
-              </Select>
-              <VStack align="stretch" spacing={3}>
-                {selectedOption === 'functions' && (
-                  ['generate_image.py', 'another_function.py'].map((filename, index) => (
-                    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
-                      {filename}
-                    </Text>
-                  ))
-                )}
-                {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
-              </VStack>
+  <option value="functions">Functions</option>
+  <option value="memory">Memory</option>
+</Select>
+<VStack align="stretch" spacing={3}>
+  {selectedOption === 'functions' && (
+    functionFileNames.map((filename, index) => (
+      <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+        {filename}
+      </Text>
+    ))
+  )}
+  {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
+</VStack>
             </TabPanel>
           </TabPanels>
         </Tabs>
