@@ -192,7 +192,15 @@ const Index = () => {
                   </Box>
                 ))}
               </Box>
-              <InputGroup size="md">
+              {messages.some(message => message.url) && (
+                <Image
+                  src={messages.find(message => message.url).url}
+                  alt="Uploaded content"
+                  boxSize="100%"
+                  objectFit="cover"
+                />
+              )}
+              <InputGroup size="md" mt={3}>
                 <Input
                   pr="4.5rem"
                   placeholder="Type a message..."
