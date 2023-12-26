@@ -21,7 +21,8 @@ import {
   Select // Added Select import
 } from '@chakra-ui/react';
 import { FaPaperPlane, FaUpload } from 'react-icons/fa';
-import FeedbackSelector from '../components/FeedbackSelector'; // Verify the path is correct
+import FeedbackSelector from '../components/FeedbackSelector';
+import DatabaseObjectDisplay from '../components/DatabaseObjectDisplay'; // Import DatabaseObjectDisplay component
 
 // ... The rest of the Index component code remains unchanged ...
 
@@ -168,10 +169,11 @@ const Index = () => {
               </VStack>
             </TabPanel>
             <TabPanel>
-              <Select placeholder="Select option">
+              <Select placeholder="Select option" mb={4}>
                 <option value="functions">Functions</option>
                 <option value="memory">Memory</option>
               </Select>
+              <DatabaseObjectDisplay />
               {/* Content for Functions and Memory will be added here */}
             </TabPanel>
           </TabPanels>
