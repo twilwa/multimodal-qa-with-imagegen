@@ -145,28 +145,7 @@ const Index = () => {
     <Flex h="100vh" overflow="hidden">
       <Box w="350px" h="calc(100vh - 40px)" borderRight="1px" borderColor="gray.200" overflowY="auto" pl={2}>
         <Tabs isFitted variant="enclosed">
-          <TabList>
-            <Tab>Eval</Tab>
-            <Tab>Interface</Tab>
-          </TabList>
-
           <TabPanels>
-            <TabPanel>
-              <VStack spacing={4}>
-                {messages.map((message, index) => (
-                  <Box
-                    key={index}
-                    alignSelf={message.type === 'user' ? 'flex-end' : 'flex-start'}
-                    bg={message.type === 'user' ? 'blue.100' : 'gray.100'}
-                    p={3}
-                    borderRadius="md"
-                  >
-                    {message.content}
-                  </Box>
-                ))}
-                <FeedbackSelector />
-              </VStack>
-            </TabPanel>
             <TabPanel>
               <Select placeholder="Select option">
                 <option value="functions">Functions</option>
