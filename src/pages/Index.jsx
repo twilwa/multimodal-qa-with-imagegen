@@ -182,38 +182,23 @@ const Index = () => {
       </Box>
 
       <Box flex="1" p={4}>
-        <HStack spacing={0} align="start">
+        <HStack spacing={4} align="start">
           <VStack spacing={0} align="stretch">
-              <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" h="512px" overflowY="auto">
-                {messages.map((message, index) => (
-                  <Box
-                    key={index}
-                    alignSelf={message.type === 'user' ? 'flex-end' : 'flex-start'}
-                    bg={message.type === 'user' ? 'blue.100' : 'gray.100'}
-                    p={3}
-                    borderRadius="md"
-                    mb={3}
-                  >
-                    {message.content}
-                  </Box>
-                ))}
-              </Box>
-              {messages.some(message => message.type === 'image') ? (
-  <Image
-    src={messages.find(message => message.type === 'image').content}
-    alt="Uploaded content"
-    boxSize="100%"
-    objectFit="cover"
-  />
-) : (
-  <Image
-    src="https://via.placeholder.com/512"
-    alt="Placeholder"
-    boxSize="100%"
-    objectFit="cover"
-  />
-)}
-              <InputGroup size="md" mt={3}>
+            <Box borderWidth="1px" borderRadius="lg" p={4} w="512px" h="512px" overflowY="auto">
+              {messages.map((message, index) => (
+                <Box
+                  key={index}
+                  alignSelf={message.type === 'user' ? 'flex-end' : 'flex-start'}
+                  bg={message.type === 'user' ? 'blue.100' : 'gray.100'}
+                  p={3}
+                  borderRadius="md"
+                  mb={3}
+                >
+                  {message.content}
+                </Box>
+              ))}
+            </Box>
+            <InputGroup size="md" mt={3}>
                 <Input
                   pr="4.5rem"
                   placeholder="Type a message..."
@@ -222,29 +207,44 @@ const Index = () => {
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 />
                 <InputRightElement width="4.5rem">
-                  <IconButton
-                    aria-label="Upload image"
-                    icon={<FaUpload />}
-                    onClick={() => document.getElementById('file-upload').click()}
-                  />
-                  <input
-                    id="file-upload"
-                    type="file"
-                    hidden
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                  />
-                  <IconButton
-                    h="1.75rem"
-                    size="sm"
-                    aria-label="Send message"
-                    ml={2}
-                    icon={<FaPaperPlane />}
-                    onClick={handleSendMessage}
-                  />
-                </InputRightElement>
-              </InputGroup>
-            </VStack>
+                <IconButton
+                  aria-label="Upload image"
+                  icon={<FaUpload />}
+                  onClick={() => document.getElementById('file-upload').click()}
+                />
+                <input
+                  id="file-upload"
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                />
+                <IconButton
+                  h="1.75rem"
+                  size="sm"
+                  aria-label="Send message"
+                  ml={2}
+                  icon={<FaPaperPlane />}
+                  onClick={handleSendMessage}
+                />
+              </InputRightElement>
+            </InputGroup>
+          </VStack>
+          {messages.some(message => message.type === 'image') ? (
+            <Image
+              src={messages.find(message => message.type === 'image').content}
+              alt="Uploaded content"
+              boxSize="512px"
+              objectFit="cover"
+            />
+          ) : (
+            <Image
+              src="https://via.placeholder.com/512"
+              alt="Placeholder"
+              boxSize="512px"
+              objectFit="cover"
+            />
+          )}
         </HStack>
     
       </Box>
