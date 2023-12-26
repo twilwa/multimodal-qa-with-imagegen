@@ -223,8 +223,12 @@ const Index = () => {
     </Text>
   ))
 )}
-{selectedOption === 'Eval-Dashboard' && (
-  <DatabaseObjectDisplay />
+{selectedOption === 'memory' && (
+  vectorDbsList.map((dbName, index) => (
+    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+      {dbName}
+    </Text>
+  ))
 )}
 </VStack>
             </TabPanel>
