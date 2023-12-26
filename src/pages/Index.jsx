@@ -90,8 +90,9 @@ const Index = () => {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
-          <InputRightElement width="4.5rem">
+          <InputRightElement width="7rem">
             <IconButton
+              aria-label="Upload image"
               icon={<FaUpload />}
               onClick={() => document.getElementById('file-upload').click()}
             />
@@ -99,9 +100,11 @@ const Index = () => {
               id="file-upload"
               type="file"
               hidden
+              accept="image/*"
               onChange={handleFileUpload}
             />
             <IconButton
+              aria-label="Send message"
               ml={2}
               icon={<FaPaperPlane />}
               onClick={handleSendMessage}
