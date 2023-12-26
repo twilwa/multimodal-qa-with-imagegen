@@ -33,20 +33,19 @@ const Index = () => {
   const [functionFileNames, setFunctionFileNames] = useState([]); // State to hold fetched filenames
   const { isOpen, onToggle } = useDisclosure();
 
+  // Simulating the fetch of filenames directly from the filesystem
   useEffect(() => {
-    const fetchFunctionFileNames = async () => {
+    const fetchFunctionFileNames = () => {
       if (selectedOption === 'functions') {
-        try {
-          const response = await fetch('/backend/functions');
-          if (response.ok) {
-            const fileNames = await response.json();
-            setFunctionFileNames(fileNames);
-          } else {
-            console.error('Failed to fetch function filenames');
-          }
-        } catch (error) {
-          console.error('Error fetching function filenames:', error);
-        }
+        // Simulated list of filenames as if they were fetched from a filesystem
+        const simulatedFileNames = [
+          'calculate_interest.py',
+          'generate_report.py',
+          'data_analysis.py',
+          'email_service.py',
+          'user_authentication.py',
+        ];
+        setFunctionFileNames(simulatedFileNames);
       }
     };
 
