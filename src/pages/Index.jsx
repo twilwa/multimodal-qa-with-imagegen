@@ -204,7 +204,7 @@ const Index = () => {
               </VStack>
             </TabPanel>
             <TabPanel>
-              <Select placeholder="Select option" mb={4} onChange={(e) => setSelectedOption(e.target.value)}>
+              <Select placeholder="Eval-Dashboard" mb={4} onChange={(e) => setSelectedOption(e.target.value)}>
   <option value="functions">Functions</option>
   <option value="memory">Memory</option>
 </Select>
@@ -223,12 +223,8 @@ const Index = () => {
     </Text>
   ))
 )}
-{selectedOption === 'memory' && vectorDbsList.length > 0 && (
-  vectorDbsList.map((db, index) => (
-    <Box key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
-      {db}
-    </Box>
-  ))
+{selectedOption === 'Eval-Dashboard' && (
+  <DatabaseObjectDisplay />
 )}
 </VStack>
             </TabPanel>
