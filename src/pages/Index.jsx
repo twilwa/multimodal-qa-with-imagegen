@@ -120,19 +120,25 @@ const Index = () => {
       const newMessage = { type: 'user', content: inputValue };
       // Here we would normally send the message to the backend
       setMessages([...messages, newMessage]);
-      sendMessageToGPT4({ text: inputValue, url: 'URL_OF_THE_IMAGE' }); // Replace with actual image URL
+      // Removed the placeholder image URL
+      sendMessageToGPT4({ text: inputValue });
       setInputValue('');
     }
   };
 
-  const handleFileUpload = (event) => {
-    // Normally we would upload the file here and send it to the backend
-    const file = event.target.files[0];
-    if (file) {
-      // Placeholder for file upload logic
-      console.log('Uploaded file:', file.name);
-    }
-  };
+  // Updated file upload logic to include setting the image URL in the messages state
+    const handleFileUpload = async (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        // Here, we should normally upload the file to a server and get back the image URL
+        // For demonstration purposes, assuming the file upload returns a URL immediately
+        const imageUrl = URL.createObjectURL(file);
+
+        // Add a new message of type 'image' with the content being the image URL
+        const newMessage = { type: 'image', content: imageUrl };
+        setMessages([...messages, newMessage]);
+      }
+    };
 
   return (
     <Flex h="100vh" overflow="hidden">
@@ -192,9 +198,9 @@ const Index = () => {
                   </Box>
                 ))}
               </Box>
-              {messages.some(message => message.url) && (
+              {messages.some(message => message.type === 'image') && (
                 <Image
-                  src={messages.find(message => message.url).url}
+                  src={messages.find(message => message.type === 'image').content}
                   alt="Uploaded content"
                   boxSize="100%"
                   objectFit="cover"
