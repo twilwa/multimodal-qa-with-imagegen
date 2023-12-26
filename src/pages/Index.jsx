@@ -174,8 +174,18 @@ const Index = () => {
                 <option value="functions">Functions</option>
                 <option value="memory">Memory</option>
               </Select>
-              {selectedOption !== 'functions' && <DatabaseObjectDisplay />}
-              {/* Content for Functions and Memory will be added here. DatabaseObjectDisplay will not be shown if 'functions' is selected. */}
+              {selectedOption === 'functions' ? (
+                <VStack align="stretch" spacing={3}>
+                  {/* Simulating fetching filenames from the /backend/functions directory */}
+                  {['generate_image.py', 'another_function.py'].map((filename, index) => (
+                    <Text key={index} fontSize="md" p={2} borderWidth="1px" borderRadius="lg">
+                      {filename}
+                    </Text>
+                  ))}
+                </VStack>
+              ) : (
+                <DatabaseObjectDisplay />
+              )}
             </TabPanel>
           </TabPanels>
         </Tabs>
