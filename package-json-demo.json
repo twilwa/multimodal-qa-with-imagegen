@@ -1,0 +1,28 @@
+{
+    "name": "sveltekit-bun-project",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "bun dev",
+        "build": "bun build",
+        "lint": "eslint . --ext js,svelte --report-unused-disable-directives --max-warnings 0",
+        "preview": "bun preview"
+    },
+    "devDependencies": {
+        "@sveltejs/kit": "next",
+        "@sveltejs/eslint-plugin": "^3.5.0",
+        "eslint": "^8.54.0",
+        "bun": "^0.5.8",
+        "svelte": "^3.44.2",
+        "svelte-check": "^2.2.8",
+        "svelte-preprocess": "^4.10.1",
+        "vite": "^2.7.13"
+    },
+    "dependencies": {
+        "@chakra-ui/svelte": "^1.0.0",
+        "@emotion/svelte": "^11.11.1",
+        "framer-motion": "^5.5.5",
+        "svelte-routing": "^1.4.2"
+    }
+}
